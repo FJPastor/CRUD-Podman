@@ -23,12 +23,13 @@ podman run -e MYSQL_ROOT_PASSWORD=root -p 8081:3306 -d docker.io/library/mysql:l
 
 ### Department Tables
 
-"sql"
+```sql
 CREATE TABLE Master.Departamento (
     id SMALLINT UNSIGNED NOT NULL,
     nombre VARCHAR(255),
     CONSTRAINT unique_id_departamento UNIQUE (id)
 );
+''' 
 
 CREATE TABLE Master.Departamento_Idioma (
     id SMALLINT UNSIGNED NOT NULL,
