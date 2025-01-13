@@ -29,7 +29,7 @@ CREATE TABLE Master.Departamento (
     nombre VARCHAR(255),
     CONSTRAINT unique_id_departamento UNIQUE (id)
 );
-''' 
+
 
 CREATE TABLE Master.Departamento_Idioma (
     id SMALLINT UNSIGNED NOT NULL,
@@ -40,21 +40,21 @@ CREATE TABLE Master.Departamento_Idioma (
     CONSTRAINT fk_departamento FOREIGN KEY (codDepartamento) 
     REFERENCES Master.Departamento(id)
 );
-
+```
 
 ### Process Status Table
 
-sql
+```sql
 CREATE TABLE Master.EstadoProceso (
     id SMALLINT UNSIGNED NOT NULL,
     nombre VARCHAR(255),
     CONSTRAINT unique_id_estado_proceso UNIQUE (id)
 );
-
+```
 
 ### Employee Table
 
-sql
+```sql
 CREATE TABLE Master.Empleado (
     id SMALLINT UNSIGNED NOT NULL,
     codInstalacion SMALLINT UNSIGNED,
@@ -72,11 +72,11 @@ CREATE TABLE Master.Empleado (
     CONSTRAINT fk_departamento_empleado FOREIGN KEY (codDepartamento) 
     REFERENCES Master.Departamento(id)
 );
-
+```
 
 ### Task Table
 
-sql
+```sql
 CREATE TABLE Master.Tarea (
     id SMALLINT UNSIGNED NOT NULL,
     codEmpleado SMALLINT UNSIGNED,
@@ -93,11 +93,11 @@ CREATE TABLE Master.Tarea (
     CONSTRAINT fk_tarea_empleado FOREIGN KEY (codEmpleado) 
     REFERENCES Master.Empleado(id)
 );
-
+```
 
 ### Assignment Rules Table
 
-sql
+```sql
 CREATE TABLE Master.ReglaAsignacion (
     id SMALLINT UNSIGNED NOT NULL,
     nombre VARCHAR(255),
@@ -114,29 +114,29 @@ CREATE TABLE Master.ReglaAsignacion (
     CONSTRAINT unique_origen UNIQUE (origen, codTareaOrigen),
     CONSTRAINT diferente_origen_destino CHECK (codTareaDestino <> codTareaOrigen)
 );
-
+```
 
 ## Sample Data
 
 ### Process Status Data
 
-sql
+```sql
 INSERT INTO Master.EstadoProceso (id, nombre) VALUES (1, 'Activo');
-
+```
 
 ### Department Data
 
-sql
+```sql
 INSERT INTO Master.Departamento (id, nombre) 
 VALUES (1, 'Recursos Humanos');
 
 INSERT INTO Master.Departamento_Idioma (id, codDepartamento, codIdioma, nombre) 
 VALUES (1, 1, 1, 'Human Resources');
-
+```
 
 ### Employee Data
 
-sql
+```sql
 INSERT INTO Master.Empleado (
     id, codInstalacion, codDepartamento, nombre, descripcion, 
     codigoEmpleado, fechaAlta, fechaBaja, codEstado, ubicacion
@@ -145,11 +145,11 @@ INSERT INTO Master.Empleado (
     '2024-10-04', NULL, 1, 'Oficina Central'),
 (2, 20, 1, 'María López', 'Asistente', 'abcdefghi', 
     '2024-10-04', NULL, 1, 'Sucursal 2');
-
+```
 
 ### Task Data
 
-sql
+```sql
 INSERT INTO Master.Tarea (
     id, codEmpleado, nombre, descripcion, detalles, prioridad, 
     duracionEstimada, recursos, responsable, estado, comentario
@@ -158,13 +158,13 @@ INSERT INTO Master.Tarea (
     'Alta', '4 horas', '["Recurso A", "Recurso B"]', 'Juan Pérez', 1, 'Sin problemas'),
 (2, 2, 'Tarea B', 'Descripción de la Tarea B', '["Paso 1", "Paso 2"]', 
     'Media', '2 horas', '["Recurso X"]', 'María López', 0, 'En espera');
-
+```
 
 ### Assignment Rules Data
 
-sql
+```sql
 INSERT INTO Master.ReglaAsignacion (
     id, nombre, descripcion, origen, destino, codTareaOrigen, codTareaDestino
 ) VALUES 
 (1, 'Regla 1', 'Regla de asignación entre tareas', 8080, 8081, 1, 2),
-(2, 'Regla 2', 'Regla de retorno', 8081, 8080, 2, 1);
+(2, 'Regla 2', 'Regla de retorno', 8081, 8080, 2, 1);```
