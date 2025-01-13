@@ -167,4 +167,5 @@ INSERT INTO Master.ReglaAsignacion (
     id, nombre, descripcion, origen, destino, codTareaOrigen, codTareaDestino
 ) VALUES 
 (1, 'Regla 1', 'Regla de asignación entre tareas', 8080, 8081, 1, 2),
-(2, 'Regla 2', 'Regla de retorno', 8081, 8080, 2, 1);```
+(2, 'Regla 2', 'Regla de retorno', 8081, 8080, 2, 1);
+```
