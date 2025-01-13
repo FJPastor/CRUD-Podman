@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.222.0/containers/python-3-miniconda
+{
+	"name": "Python Environment",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"features": {
+		"ghcr.io/dhoeric/features/hadolint:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"editorconfig.editorconfig",
+				"ryanluker.vscode-coverage-gutters",
+				"charliermarsh.ruff",
+				"codezombiech.gitignore",
+				"eamodio.gitlens",
+				"kevinrose.vsc-python-indent",
+				"mosapride.zenkaku",
+				"njpwerner.autodocstring",
+				"oderwat.indent-rainbow",
+				"pkief.material-icon-theme",
+				"shardulm94.trailing-spaces",
+				"usernamehw.errorlens",
+				"yzhang.markdown-all-in-one"
+			],
+			"settings": {
+				"python.terminal.activateEnvInCurrentTerminal": true,
+				"python.defaultInterpreterPath": ".venv/bin/python",
+				"[python]": {
+					"editor.defaultFormatter": "charliermarsh.ruff",
+					"editor.codeActionsOnSave": {
+						"source.fixAll.ruff": "explicit",
+						"source.organizeImports.ruff": "explicit"
+					},
+					"editor.formatOnSave": true
+				},
+				"files.insertFinalNewline": true,
+				"files.trimTrailingWhitespace": true,
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				"terminal.integrated.profiles.linux": {
+					"zsh": {
+						"path": "/bin/zsh"
+					}
+				}
+			}
+		}
+	},
+	"postCreateCommand": "uv sync --dev"
+}
