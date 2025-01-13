@@ -8,14 +8,14 @@ This project provides CRUD operations on databases and integrates Podman for loc
 ### API Setup
 To use the Podman API, start the service on port 8082 with:
 
-bash
+
 podman system service -t 0 tcp:localhost:8082
 
 
 ### Database Container
 Create a MySQL database container using:
 
-bash
+
 podman run -e MYSQL_ROOT_PASSWORD=root -p 8081:3306 -d docker.io/library/mysql:latest
 
 
